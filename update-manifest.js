@@ -14,7 +14,7 @@ const jsEntrypoint = assetManifest.entrypoints.filter((file) =>
 const contentScripsOtps = {
   content_scripts: [
     {
-      matches: ["http://gitlab.k8s.alfa.link/*/-/jobs/*/raw"],
+      matches: ["http://gitlab.k8s.alfa.link/*/-/jobs/*/raw", "https://storage.googleapis.com/gitlab-gprd-artifacts/*/job.log*"],
       css: cssEntrypoints,
       js: jsEntrypoint,
     },
