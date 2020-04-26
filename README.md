@@ -8,11 +8,13 @@ It works with self-hosted Gitlab instances for links like http://[your-gitlab-ho
 
 ## How it looks
 
-<p align="center">Wihtout extenison</p>
+<p align="center">wihtout extenison</p>
 
 ![Without extension](media/before.png)
 
-<p align="center">With extenison</p>
+---------
+
+<p align="center">with extenison</p>
 
 ![With extension](media/after.png)
 
