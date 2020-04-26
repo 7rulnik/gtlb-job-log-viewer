@@ -39,7 +39,7 @@ It works with self-hosted Gitlab instances for links like http://*your-gitlab-ho
 
 # TODO
 
-- [ ] Publish in diffrent broswer's stores
+- [ ] Publish into diffrent broswer's stores
 - [ ] Fix section's durations and add some styles for it
 - [ ] Parse links
 - [ ] Custom highlight color schemes and fonts
