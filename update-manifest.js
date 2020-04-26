@@ -1,7 +1,7 @@
 var fs = require("fs");
 
 const manifestPath = "./build/manifest.json";
-const manifest = require(manifestPath);
+const manifest = require('./public/manifest.json');
 const assetManifest = require("./build/asset-manifest.json");
 
 const cssEntrypoints = assetManifest.entrypoints.filter((file) =>
@@ -14,7 +14,7 @@ const jsEntrypoint = assetManifest.entrypoints.filter((file) =>
 const contentScripsOtps = {
   content_scripts: [
     {
-      matches: ["http://gitlab.k8s.alfa.link/*/-/jobs/*/raw", "https://storage.googleapis.com/gitlab-gprd-artifacts/*/job.log*"],
+      matches: ["http://*/*/-/jobs/*/raw", "https://storage.googleapis.com/gitlab-gprd-artifacts/*/job.log*"],
       css: cssEntrypoints,
       js: jsEntrypoint,
     },

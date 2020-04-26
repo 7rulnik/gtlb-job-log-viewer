@@ -2,12 +2,6 @@
   "manifest_version": 2,
 
   "name": "Gitlab CI logs viewer",
-  "description": "This extension is a starting point to create a real Chrome extension",
-  "version": "0.0.1",
-
-  "browser_action": {
-    "default_popup": "index.html",
-    "default_title": "Open the popup"
-  },
-  "permissions": ["tabs", "<all_urls>", "activeTab"]
+  "description": "View full logs from Gitlab CI with ANSI code highlight",
+  "version": "0.0.1"
 }
