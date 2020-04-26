@@ -1,4 +1,9 @@
-# Gitlab CI logs viewer
+<p align="center">
+  <img width="220" src="media/logo.png" alt="logo"/>
+</p>
+
+<h1 align="center">Gitlab CI logs viewer</h1>
+
 
 > Chrome extension for code highlighting raw logs in GItlab CI
 
