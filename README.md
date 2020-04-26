@@ -13,13 +13,13 @@ It works with self-hosted Gitlab instances for links like http://*your-gitlab-ho
 
 ## How it looks
 
-<p align="center">wihtout extenison</p>
+<p align="center">wihtout extension</p>
 
 ![Without extension](media/before.png)
 
 ---------
 
-<p align="center">with extenison</p>
+<p align="center">with extension</p>
 
 ![With extension](media/after.png)
 
