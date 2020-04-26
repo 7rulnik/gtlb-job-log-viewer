@@ -4,7 +4,7 @@ import anser from "anser";
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import log from "!!raw-loader!./log.txt";
 
-const content = document.querySelector("pre").innerText;
+// const content = document.querySelector("pre").innerText;
 
 // const startRegex = /section_start:(?<startTimestamp>\d+):(?<sectionName>.+)\re\[0K(?<sectionHeader>.+)?/;
 const startRegex = /section_start:(?<startTimestamp>\d+):(?<sectionName>.+)/;
