@@ -36,3 +36,12 @@ It works with self-hosted Gitlab instances for links like http://*your-gitlab-ho
 3. Open [chrome://extensions/](chrome://extensions/)
 4. Turn on **Developer mode** in upper right corner
 5. Drag and drop unarchived folder
+
+# TODO
+
+- [ ] Publish in diffrent broswer's stores
+- [ ] Fix section's durations and add some styles for it
+- [ ] Parse links
+- [ ] Custom highlight color schemes and fonts
+
+
