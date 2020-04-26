@@ -7,7 +7,7 @@
 
 > Browser extension for code highlighting raw logs in GItlab CI
 
-If you have large logs Gitlab will show only part of it. Gitlab has a link to the full log but it's completely unusable due of lack ANSI code highlight and text formatting. This extension parses ANSI codes and shows your's full logs with code highlights.
+If you have large logs Gitlab will show only part of it. Gitlab has a link to the full log but it's completely unusable due of lack ANSI code highlighting and text formatting. This extension parses ANSI codes and shows full logs with code highlighting.
 
 It works with self-hosted Gitlab instances for links like http://*your-gitlab-hostname*/*path-to-project*/-/jobs/*job-number*/raw and with gitlab.com.
 
@@ -43,5 +43,7 @@ It works with self-hosted Gitlab instances for links like http://*your-gitlab-ho
 - [ ] Fix section's durations and add some styles for it
 - [ ] Parse links
 - [ ] Custom highlight color schemes and fonts
+- [ ] Add gif with example
+- [ ] Add info about where to find link to full log
 
 
