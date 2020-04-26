@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import anser from "anser";
 
-// eslint-disable-next-line import/no-webpack-loader-syntax
-import log from "!!raw-loader!./log.txt";
-
 // const content = document.querySelector("pre").innerText;
 
 // const startRegex = /section_start:(?<startTimestamp>\d+):(?<sectionName>.+)\re\[0K(?<sectionHeader>.+)?/;
@@ -42,8 +39,8 @@ function getStyle(part) {
   return style;
 }
 
-function Parser() {
-  const logsByRows = log.split("\n");
+function Parser(props) {
+  const logsByRows = props.trace.split("\n");
 
   const groupBeSection = [
     {
