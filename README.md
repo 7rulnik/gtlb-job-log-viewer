@@ -25,4 +25,14 @@ It works with self-hosted Gitlab instances for links like http://*your-gitlab-ho
 
 ## How to install
 
+### Chrome Web Store
+
 > Currently it is passing review in Chrome Web Store
+
+### Manual
+
+1. Download extension archive [v0.0.1.zip](https://github.com/7rulnik/gitlab-job-log-viewer/releases/download/v0.0.1/v0.0.1.zip)
+2. Unarchive it
+3. Open [chrome://extensions/](chrome://extensions/)
+4. Turn on **Developer mode** in upper right corner
+5. Drag and drop unarchived folder
