@@ -5,7 +5,7 @@
 <h1 align="center">Gitlab CI logs viewer</h1>
 
 
-> Browser extension for code highlighting raw logs in GItlab CI
+> [Browser extension](https://chrome.google.com/webstore/detail/gitlab-ci-logs-viewer/mjjniaplbhdjmhkmfknkbemfjghofaff) for code highlighting raw logs in GItlab CI
 
 If you have large logs Gitlab will show only part of it. Gitlab has a link to the full log but it's completely unusable due of lack ANSI code highlighting and text formatting. This extension parses ANSI codes and shows full logs with code highlighting.
 
@@ -25,11 +25,9 @@ It works with self-hosted Gitlab instances for links like http://*your-gitlab-ho
 
 ## How to install
 
-### Chrome Web Store
+[Chrome web store](https://chrome.google.com/webstore/detail/gitlab-ci-logs-viewer/mjjniaplbhdjmhkmfknkbemfjghofaff)
 
-> Currently it is passing review in Chrome Web Store
-
-### Manual
+### Manual install
 
 1. Download extension archive [v0.0.1.zip](https://github.com/7rulnik/gitlab-job-log-viewer/releases/download/v0.0.1/v0.0.1.zip)
 2. Unarchive it
