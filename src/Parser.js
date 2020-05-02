@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import anser from "anser";
 
-// const content = document.querySelector("pre").innerText;
-
 // const startRegex = /section_start:(?<startTimestamp>\d+):(?<sectionName>.+)\re\[0K(?<sectionHeader>.+)?/;
 const startRegex = /section_start:(?<startTimestamp>\d+):(?<sectionName>.+)/;
 
@@ -49,7 +47,6 @@ function Parser(props) {
   ];
 
   for (const line of logsByRows) {
-    //   debugger;
     const lastGroup = groupBeSection[groupBeSection.length - 1];
     const openMatched = line.match(startRegex);
     const closeMatched = line.match(endRegex);
@@ -73,40 +70,6 @@ function Parser(props) {
       }
     }
   }
-
-  //   debugger;
-
-  const logsAsJson = logsByRows.map((row) => anser.ansiToJson(row));
-
-  //   return (
-  //     <code>
-  //       {logsAsJson.map((row, key) => {
-  //         return (
-  //           <div key={key} className="row">
-  //             {row.map((stringPart, index) => {
-  //               if (stringPart.content.startsWith("section_start:")) {
-  //                 return (
-  //                   <>
-  //                     <br />
-  //                     <br />
-  //                   </>
-  //                 );
-  //               }
-
-  //               if (stringPart.content.startsWith("section_end:")) {
-  //                 return null;
-  //               }
-  //               return (
-  //                 <span key={index} style={getStyle(stringPart)}>
-  //                   {stringPart.content}
-  //                 </span>
-  //               );
-  //             })}
-  //           </div>
-  //         );
-  //       })}
-  //     </code>
-  //   );
 
   return (
     <code>
