@@ -15,13 +15,13 @@ It works with self-hosted Gitlab instances for links like http://*your-gitlab-ho
 
 <p align="center">wihtout extension</p>
 
-![Without extension](media/before.png)
+![Without extension](media/before-640.png)
 
 ---------
 
 <p align="center">with extension</p>
 
-![With extension](media/after.png)
+![With extension](media/example-640.png)
 
 ## How to install
 
