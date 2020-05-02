@@ -10,5 +10,7 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  reactRoot
+  reactRoot, () => {
+    document.body.style.display = "block";
+  }
 );
