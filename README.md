@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="220" src="media/logo.png" alt="logo"/>
+  <img width="220" src="media/logo.svg" alt="logo"/>
 </p>
 
 <h1 align="center">Gitlab CI logs viewer</h1>

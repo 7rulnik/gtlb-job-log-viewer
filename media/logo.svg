@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="303px" height="279px" viewBox="0 0 303 279" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>gitlab-icon-rgb</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="gitlab-icon-rgb">
+            <g id="g44"></g>
+            <g id="g48" transform="translate(94.930433, 106.572845)" fill="#00BB00" fill-rule="nonzero">
+                <polygon id="path50" points="56.420918 171.868863 56.420918 171.868863 112.089557 0.56420918 0.77914601 0.56420918"></polygon>
+            </g>
+            <g id="g56" transform="translate(17.015832, 106.572845)" fill="#BB0000" fill-rule="nonzero">
+                <polygon id="path58" points="134.335519 171.868863 78.6489685 0.56420918 0.734367504 0.56420918"></polygon>
+            </g>
+            <g id="g64" transform="translate(0.000000, 106.572845)" fill="#00BBBB" fill-rule="nonzero">
+                <path d="M17.68751,0.617943387 L17.68751,0.617943387 L0.752278906,52.6684791 C-0.791082989,57.414723 0.893016365,62.6151929 4.92563569,65.5557332 L151.351351,171.949464 L17.68751,0.617943387 Z" id="path66"></path>
+            </g>
+            <g id="g72" transform="translate(17.015832, 0.000000)" fill="#00BB00" fill-rule="nonzero">
+                <path d="M0.698544699,107.190788 L78.7116584,107.190788 L45.1367344,4.02110987 C44.3455892,1.65912596 42.133371,0.0670914928 39.6424116,0.0670914928 C37.1514523,0.0670914928 34.9392341,1.65912596 34.1480889,4.02110987 L0.698544699,107.190788 Z" id="path74"></path>
+            </g>
+            <g id="g76" transform="translate(151.351351, 106.572845)" fill="#BB0000" fill-rule="nonzero">
+                <polygon id="path78" points="0 171.868863 55.6686391 0.56420918 133.70862 0.56420918"></polygon>
+            </g>
+            <g id="g80" transform="translate(151.351351, 106.572845)" fill="#00BBBB" fill-rule="nonzero">
+                <path d="M133.654886,0.617943387 L133.654886,0.617943387 L150.590117,52.6684791 C152.142374,57.4147138 150.456581,62.6204147 146.41676,65.5557332 L0,171.868863 L133.619063,0.617943387 L133.654886,0.617943387 Z" id="path82"></path>
+            </g>
+            <g id="g84" transform="translate(206.876699, 0.000000)" fill="#00BB00" fill-rule="nonzero">
+                <path d="M78.1653606,107.190788 L0.161202623,107.190788 L33.6734368,4.02110987 C34.4596609,1.65662241 36.6715053,0.0611747134 39.1632816,0.0611747134 C41.655058,0.0611747134 43.8669024,1.65662241 44.6531265,4.02110987 L78.1653606,107.190788 Z" id="path86"></path>
+            </g>
+        </g>
+    </g>
+</svg>
