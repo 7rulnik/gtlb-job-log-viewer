@@ -1,9 +1,64 @@
 body {
   background: #101010;
   color: #fff;
+  font-size: 14px;
+}
+
+.settings {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 30px;
+  background: rgba(16, 16, 16, 0.8);
+  display: flex;
+  padding: 5px 10px;;
 }
 
 .row {
+  display: flex;
+  padding: 2px 20px;
   white-space: pre;
-  font-size: 14px;
+}
+
+.section-row {
+  cursor: pointer;
+}
+
+.line-number {
+  color: #777;
+  user-select: none;
+  min-width: 50px;
+  text-align: right;
+  text-decoration: none;
+  margin-right: 15px;
+  display: block;
+}
+
+.line-number:hover {
+  text-decoration: underline;
+}
+
+.section-row:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.arrow {
+  position: absolute;
+  margin-left: -7px;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.duration {
+  color: #fff;
+  background: #999;
+  border-radius: 4px;
+  padding: 0px 6px;
 }

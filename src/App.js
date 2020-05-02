@@ -14,7 +14,9 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => toggle(!showParsed)}>Toogle view</button>
+      <div className="settings">
+        <button onClick={() => toggle(!showParsed)}>Toogle view</button>
+      </div>
       {!showParsed && <RawTrace trace={trace} />}
       {showParsed && <Parser trace={trace} />}
     </div>
