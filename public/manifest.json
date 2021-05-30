@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Gitlab CI logs viewer",
   "description": "View full logs from Gitlab CI with ANSI code highlight",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage_url": "https://github.com/7rulnik/gitlab-job-log-viewer",
   "icons": {
     "16": "logo16.png",
