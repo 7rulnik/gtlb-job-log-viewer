@@ -28,4 +28,4 @@ It works with self-hosted GitLab instances for links like http(s)://*your-gitlab
 
 ## How to install
 
-[Chrome web store](https://chrome.google.com/webstore/detail/gtlb-ci-logs-viewer/mjjniaplbhdjmhkmfknkbemfjghofaff)
+[Chrome web store](https://chromewebstore.google.com/detail/gtlb-ci-logs-viewer/mjjniaplbhdjmhkmfknkbemfjghofaff)
