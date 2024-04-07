@@ -1,9 +1,5 @@
-<p align="center">
-  <img width="220" src="media/logo.svg" alt="logo"/>
-</p>
-
-<h1 align="center">Gitlab CI logs viewer</h1>
-
+<h1 align="center">GTLB CI logs viewer</h1>
+<h4 align="center">Disclaimer: it's not an offical GitLab extension</h3>
 
 > [Browser extension](https://chrome.google.com/webstore/detail/gitlab-ci-logs-viewer/mjjniaplbhdjmhkmfknkbemfjghofaff) for code highlighting raw logs in GItlab CI
 
@@ -28,4 +24,4 @@ It works with self-hosted Gitlab instances for links like http(s)://*your-gitlab
 
 ## How to install
 
-[Chrome web store](https://chrome.google.com/webstore/detail/gitlab-ci-logs-viewer/mjjniaplbhdjmhkmfknkbemfjghofaff)
+[Chrome web store](https://chrome.google.com/webstore/detail/gtlb-ci-logs-viewer/mjjniaplbhdjmhkmfknkbemfjghofaff)
