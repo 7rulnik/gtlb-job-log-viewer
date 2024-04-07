@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="220" src="media/logo.svg" alt="logo"/>
+</p>
+
 <h1 align="center">GTLB CI logs viewer</h1>
 <h4 align="center">Disclaimer: it's not an offical GitLab extension</h3>
 
