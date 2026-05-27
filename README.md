@@ -1,3 +1,7 @@
+**DISCLAMIER:** I don't use GitLab for many years and I don't support this extension for many years. Not even sure it still works as intended. So this is why it's archived.
+
+----------
+
 <p align="center">
   <img width="220" src="media/logo.svg" alt="logo"/>
 </p>
