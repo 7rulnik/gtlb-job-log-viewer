@@ -4,14 +4,17 @@ import { format } from "date-fns";
 
 import { ReactComponent as ArrowRight } from "./arrow-right.svg";
 import { ReactComponent as ArrowDown } from "./arrow-down.svg";
+import { Fragment } from "react/jsx-runtime";
 
 // const startRegex = /section_start:(?<startTimestamp>\d+):(?<sectionName>.+)\re\[0K(?<sectionHeader>.+)?/;
-const startRegex = /section_start:(?<startTimestamp>\d+):(?<sectionName>.+)/;
+const startRegex = /section_start:(?<startTimestamp>\d+):(?<sectionName>[a-zA-Z0-9-_]+)(?:\[(?<sectionOptions>[a-zA-Z0-9-_,=]+)\])?/;
 
 // const endRegex = /section_end:(?<endTimestamp>\d+):(?<sectionName>.+)\re\[0K/;
-const endRegex = /section_end:(?<endTimestamp>\d+):(?<sectionName>.+)/;
+const endRegex = /section_end:(?<endTimestamp>\d+):(?<sectionName>[a-zA-Z0-9-_]+)/;
 
-const { pathname } = window.location;
+function hasStyle(part) {
+  return part.decoration || part.fg || part.bg;
+}
 
 function getStyle(part) {
   const style = {};
@@ -62,53 +65,104 @@ function Parser(props) {
     };
   });
 
-  const groupBeSection = [
-    {
-      lines: [],
-    },
-  ];
+  const rootGroup =
+  {
+    lines: [],
+    options: [],
+    indent: 0,
+  };
+
+  let groupStack = [rootGroup];
+
+  let lastGroup = rootGroup;
 
   for (const line of logsByRows) {
-    const lastGroup = groupBeSection[groupBeSection.length - 1];
+    const lastGroup = groupStack[groupStack.length - 1];
     const openMatched = line.text.match(startRegex);
     const closeMatched = line.text.match(endRegex);
 
     if (!openMatched && !closeMatched) {
-      lastGroup.lines.push(line);
+      if(line.text)
+      {
+        lastGroup.lines.push(line);
+      }
     } else if (openMatched) {
-      const { startTimestamp, sectionName, sectionHeader } = openMatched.groups;
+      const { startTimestamp, sectionName, sectionOptions } = openMatched.groups;
 
-      groupBeSection.push({
+      const parsedOptions = sectionOptions ? sectionOptions.split(",") : [];
+
+      let group = {
+        lineNumber: line.lineNumber,
         startTimestamp,
         sectionName,
         lines: [],
-        sectionHeader,
-      });
+        indent: lastGroup.indent + 1,
+        options: parsedOptions,
+      };
+      lastGroup.lines.push(group);
+      groupStack.push(group);
     } else if (closeMatched) {
       const { endTimestamp, sectionName } = closeMatched.groups;
 
-      if (lastGroup.sectionName === sectionName) {
-        lastGroup.endTimestamp = endTimestamp;
+      for(let groupIndex = groupStack.length - 1; groupIndex >= 1; --groupIndex)
+      {
+        const section = groupStack[groupIndex];
+        // In case of missing end_section tags, apply to all still unclosed sections on the stack.
+        section.endTimestamp = endTimestamp;
+        if(section.sectionName === sectionName)
+        {
+          groupStack.splice(groupIndex, groupStack.length - groupIndex);
+          break;
+        }
       }
     }
   }
 
-  window.__groupBeSection = groupBeSection;
   window.__format = format;
 
   return (
-    <code>
-      {groupBeSection.map((section, index) => {
-        return <Section {...section} key={index} />;
-      })}
-    </code>
+    <Section {...rootGroup}/>
   );
 }
 
-function Section(props) {
-  const [opened, toggle] = useState(true);
+function Line(props) {
+  const formatedText = anser.ansiToJson(props.text).map((stringPart, partIndex) => {
+    return stringPart.content ? (
+      hasStyle(stringPart) ? (
+        <span style={getStyle(stringPart)}>
+          {stringPart.content}
+        </span>
+      ) : stringPart.content
+    ) : null;
+  }).filter(Boolean);
 
-  let durationString;
+  if(formatedText.length > 0)
+  {
+    return (
+      <div
+        className="row"
+        id={`L${props.lineNumber}`}
+      >
+        <a
+          href={`#L${props.lineNumber}`}
+          className="line-number"
+        >
+          {props.lineNumber}
+        </a>
+        <div className="text" style={{'padding-left': props.indent * 2 + "ex"}}>
+          {React.createElement.apply(null, [Fragment, {}, ...formatedText])}
+        </div>
+      </div>
+    );
+  }
+  else
+  {
+    return null;
+  }
+}
+
+function SectionHeader(props) {
+  let durationString = "Not available";
   if (props.endTimestamp && props.startTimestamp) {
     const date = new Date((props.endTimestamp - props.startTimestamp) * 1000);
     const utcDate = convertDateToUTC(date);
@@ -116,102 +170,67 @@ function Section(props) {
     durationString = format(convertDateToUTC(date), template);
   }
 
+  const formatedText = anser.ansiToJson(props.text).map((stringPart, partIndex) => {
+    return stringPart.content ? (
+      hasStyle(stringPart) ? (
+        <span style={getStyle(stringPart)}>
+          {stringPart.content}
+        </span>
+      ) : stringPart.content
+    ) : null;
+  }).filter(Boolean);
+
   return (
+    <div
+      className="row section-row"
+      onClick={() => props.toggle(!props.opened)}
+      role="button"
+      id={`L${props.lineNumber}`}
+    >
+      <div className="arrow">
+        {props.opened ? <ArrowDown /> : <ArrowRight />}
+      </div>
+      <a
+        href={`#L${props.lineNumber}`}
+        className="line-number"
+      >
+        {props.lineNumber}
+      </a>
+
+      <div className="text" style={{'padding-left': props.indent * 2 + "ex"}}>
+        {React.createElement.apply(null, ['span', {}, ...formatedText])}
+        <span className="duration">{durationString}</span>
+      </div>
+    </div>
+  );
+}
+
+function Section(props) {
+  const [opened, toggle] = useState(props.options.includes("collapsed=true") ? false : true);
+    return (
     <>
       <section>
         {props.lines.map((line, lineIndex) => {
-          const json = anser.ansiToJson(line.text);
 
           const sectionStart = lineIndex === 0 && props.sectionName;
 
-          const text = json.map((stringPart, partIndex) => {
-            return (
-              <span key={partIndex} style={getStyle(stringPart)}>
-                {stringPart.content}
-              </span>
-            );
-          });
-
           if (sectionStart || opened) {
-            return (
-              <div
-                key={lineIndex}
-                className={`row ${sectionStart ? "section-row" : ""}`}
-                onClick={sectionStart ? () => toggle(!opened) : undefined}
-                role={sectionStart ? "button" : ""}
-                id={`L${line.lineNumber}`}
-              >
-                {sectionStart && (
-                  <div className="arrow">
-                    {opened ? <ArrowDown /> : <ArrowRight />}
-                  </div>
-                )}
-                <a
-                  href={`${pathname}#L${line.lineNumber}`}
-                  className="line-number"
-                >
-                  {line.lineNumber}
-                </a>
-
-                <div className="text">
-                  <div key={lineIndex}>{text}</div>
-                  {sectionStart && (
-                    <span className="duration">{durationString}</span>
-                  )}
-                </div>
-              </div>
-            );
+            if('text' in line)
+            {
+              if(sectionStart)
+              {
+                return (<SectionHeader {...line} startTimestamp={props.startTimestamp} endTimestamp={props.endTimestamp} toggle={toggle} opened={opened} indent={props.indent - 1} key={lineIndex}/>)
+              }
+              else
+              {
+                return (<Line text={line.text} lineNumber={line.lineNumber} indent={props.indent} key={lineIndex}/>)
+              }
+            }
+            else if('lines' in line)
+            {
+              return (<Section {...line} key={lineIndex}/>);
+            }
           }
-          {
-            /* 
-          if (lineIndex === 0 && props.sectionName) {
-            return (
-              <div className="row">
-                <a
-                  href={`${pathname}#${line.lineNumber}`}
-                  className="line-number"
-                >
-                  {line.lineNumber}
-                </a>
-                <div
-                  key={lineIndex}
-                  role="button"
-                  className="section-name"
-                  onClick={() => toggle(!opened)}
-                >
-                  {json.map((stringPart, partIndex) => {
-                    return (
-                      <span key={partIndex} style={getStyle(stringPart)}>
-                        {stringPart.content}
-                      </span>
-                    );
-                  })}
-                  <span className="duration">{durationString}</span>
-                </div>
-              </div>
-            );
-          } */
-          }
-
-          {
-            /* if (opened) {
-            return (
-              <div className="row">
-                <a className="line-number">{line.lineNumber}</a>
-                <div key={lineIndex}>
-                  {json.map((stringPart, partIndex) => {
-                    return (
-                      <span key={partIndex} style={getStyle(stringPart)}>
-                        {stringPart.content}
-                      </span>
-                    );
-                  })}
-                </div>
-              </div>
-            );
-          } */
-          }
-
           return null;
         })}
       </section>

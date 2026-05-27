@@ -12,6 +12,7 @@ body {
   background: rgba(16, 16, 16, 0.8);
   display: flex;
   padding: 5px 10px;;
+  box-sizing: border-box;
 }
 
 .row {
@@ -50,10 +51,15 @@ body {
   fill: currentColor;
 }
 
-.text {
+.section-row .text {
   display: flex;
   justify-content: space-between;
+}
+
+.text {
   width: 100%;
+  white-space: pre-wrap;
+  word-wrap: anywhere;
 }
 
 .duration {
